@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ESMS</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/ssm_esms/static/css/font.css">
+    <link rel="stylesheet" href="/ssm_esms/static/css/xadmin.css">
+    <link rel="stylesheet" href="/ssm_esms/static/lib/layui/css/layui.css">
+
+</head>
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a >首页</a>
+        <a >月考勤管理</a>
+        <a>
+          <cite>员工月考勤编辑</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+
+</div>
+
+<div class="x-body layui-anim layui-anim-up">
+
+    <form class="layui-form" action="">
+        <!--eId,dId,pId,rbId隐藏域   这些id不需要显示出来-->
+        <input type="hidden" value="" id="maId">
+        <input type="hidden" value="" id="eId">
+        <input type="hidden" value="" id="ddId">
+<!--        <input type="hidden" value="" id="ppId">-->
+<!--        <input type="hidden" value="" id="rbbId">-->
+        <table class="">
+            <tbody>
+            <tr>
+
+                <td>
+                    <label class="layui-form-label">考勤月份</label>
+                </td>
+                <td>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline">
+<!--                            <input name="date" id="attendanceTime" required autocomplete="off" class="layui-input" type="text" placeholder="yyyy-MM">-->
+                            <input name="date" id="attendanceTime" lay-verify="date" autocomplete="off" class="layui-input" type="text" readonly placeholder="yyyy-MM">
+                        </div>
+                    </div>
+                </td>
+
+                <td>
+                    <label class="layui-form-label" style="">工号</label>
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="eAccount" class="layui-input" value="" disabled/>
+                    </div>
+                </td>
+
+                <td>
+                    <label class="layui-form-label">姓名</label>
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="eName" class="layui-input" value="" disabled/>
+                    </div>
+                </td>
+
+                <td>
+                    <!--<a href="javascript:;" onclick="getDepartment();">-->
+                    <label class="layui-form-label">部门</label>
+                    <!--</a>-->
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="dName" class="layui-input" value="" disabled/>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    <label class="layui-form-label">病假天数</label>
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="sickLeaveNum" class="layui-input" value="" lay-verify="number"/>
+                    </div>
+                </td>
+
+                <td>
+                    <label class="layui-form-label">事假天数</label>
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="compassionateLeaveNum" class="layui-input" value="" lay-verify="number"/>
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    <label class="layui-form-label">平时加班小时数</label>
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="overtimeHour" class="layui-input" value="" lay-verify="number"/>
+                    </div>
+                </td>
+
+                <td>
+                    <label class="layui-form-label">周末加班小时数</label>
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="weekendHour" class="layui-input" value="" lay-verify="number"/>
+                    </div>
+                </td>
+
+                <td>
+                    <label class="layui-form-label">节假日加班小时数</label>
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="holidayHour" class="layui-input" value="" lay-verify="number"/>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    <label class="layui-form-label">迟到天数</label>
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="lateNum" class="layui-input" value="" lay-verify="number"/>
+                    </div>
+                </td>
+                <td>
+                    <label class="layui-form-label">早退天数</label>
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="earlyNum" class="layui-input" value="" lay-verify="number"/>
+                    </div>
+                </td>
+                <td>
+                    <label class="layui-form-label">缺勤天数</label>
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="absenceNum" class="layui-input" value="" lay-verify="number"/>
+                    </div>
+                </td>
+                <td>
+                    <label class="layui-form-label">出差天数</label>
+                </td>
+                <td>
+                    <div class="layui-input-inline">
+                        <input type="text" id="businessTravelNum" class="layui-input" value="" lay-verify="number"/>
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="layui-input-inline" style="margin-left:100px">
+            <button class="layui-btn layui-btn-radius" lay-submit lay-filter="addInfor"
+                    style="width: 110px">确定
+            </button>
+        </div>
+    </form>
+</div>
+
+</body>
+
+<script type="text/javascript" src="/ssm_esms/static/js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="/ssm_esms/static/lib/layui/layui.js"></script>
+<script type="text/javascript" src="/ssm_esms/static/js/xadmin.js"></script>
+
+
+<script>
+
+    window.onload = function () {
+
+        $("#maId").val(decodeURI(getQueryVariable("maId")));
+        $("#eId").val(decodeURI(getQueryVariable("eId")));
+        $("#ddId").val(decodeURI(getQueryVariable("dId")));
+
+        //加载考勤信息
+        $.ajax({
+            url: 'monthlyattendance/selectVoByPrimaryKey.do',
+            dataType: 'json',
+            data: {"id": parseInt($("#maId").val())},
+            type: 'post',
+            success: function (result) {
+                // console.log(result);
+                $("#attendanceTime").val(result.monthlyAttendance.attendanceTime);
+                $("#eAccount").val(result.employee.eAccount);
+                $("#eName").val(result.employee.eName);
+                $("#dName").val(result.department.dName);
+                $("#sickLeaveNum").val(result.monthlyAttendance.sickLeaveNum);
+                $("#compassionateLeaveNum").val(result.monthlyAttendance.compassionateLeaveNum);
+                $("#overtimeHour").val(result.monthlyAttendance.overtimeHour);
+                $("#weekendHour").val(result.monthlyAttendance.weekendHour);
+                $("#holidayHour").val(result.monthlyAttendance.holidayHour);
+                $("#lateNum").val(result.monthlyAttendance.lateNum);
+                $("#earlyNum").val(result.monthlyAttendance.earlyNum);
+                $("#absenceNum").val(result.monthlyAttendance.absenceNum);
+                $("#businessTravelNum").val(result.monthlyAttendance.businessTravelNum);
+
+                layui.form.render('radio'); //渲染表单
+            }
+        });
+    }
+
+
+    //获取url参数
+    function getQueryVariable(variable)
+    {
+        var query = window.location.search.substring(1);
+        var index = query.indexOf("?");
+        query = query.substr(index+1,query.length);
+        // console.log(query);
+        var vars = query.split("&");
+        // console.log(vars);
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            // console.log(pair[0]);
+            if(pair[0] == variable){
+                return pair[1];
+            }
+        }
+        return false;
+    }
+
+
+    // 预先加载
+    layui.use(['form', 'layedit', 'laydate'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
+        // form.render();
+
+        // //日期
+        // laydate.render({
+        //     elem: '#attendanceTime'
+        //     ,btns: ['confirm']
+        //     ,theme: 'grid'
+        //     ,trigger: 'click'
+        // });
+        //年月范围
+        laydate.render({
+            elem: '#attendanceTime'
+            , type: 'month'
+            ,btns: ['confirm']
+            ,theme: 'grid'
+            ,trigger: 'click'
+        });
+
+
+        form.verify({
+            length: function(value){
+                value = value.replace(" ","");
+                if(value.length > 200){
+                    return '输入长度过长';
+                }
+            }
+        });
+
+        //监听提交form里面的submit标签
+        form.on('submit(addInfor)', function (data) {
+            // console.log($('#headPath').val());
+            $.ajax({
+                url: "monthlyattendance/updateByPrimaryKeySelective.do",
+                data: {
+                    "maId":parseInt($("#maId").val()),
+                    "attendanceTime":$("#attendanceTime").val(),
+                    "sickLeaveNum":$("#sickLeaveNum").val(),
+                    "compassionateLeaveNum":$("#compassionateLeaveNum").val(),
+                    "overtimeHour":parseFloat($("#overtimeHour").val()),
+                    "weekendHour":parseFloat($("#weekendHour").val()),
+                    "holidayHour":parseFloat($("#holidayHour").val()),
+                    "lateNum":$("#lateNum").val(),
+                    "earlyNum":$("#earlyNum").val(),
+                    "absenceNum":$("#absenceNum").val(),
+                    "businessTravelNum":$("#businessTravelNum").val()
+                },
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    if (data == 1) {
+                        layer.alert("修改成功", {title: "修改信息"}
+
+                        )
+
+                    } else {
+                        layer.alert("修改失败", {title: "修改信息"})
+                    }
+                },
+            })
+            return false;
+        });
+
+
+    });
+
+</script>
+</html>
